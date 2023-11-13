@@ -28,6 +28,6 @@ app.get("/", (req, res)=>{
 //mongoDB connect with server
 
 const PORT= process.env.PORT || 4000
-mongoose.connect(process.env.MONGO_URI).then(()=>{
+mongoose.connect(process.env.MONGO_URI||"").then(()=>{
     app.listen(PORT, ()=>console.log(`🎉 MongoDB connected and server start on http://localhost:${PORT}`));
 });
