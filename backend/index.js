@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import userRoute from "./routes/user.routes.js";
+import errorHandler from "./middlewares/error.middlewares.js"
 
 
 // init express app
@@ -17,12 +19,15 @@ app.use(cookieParser());
 app.use(cors());
 app.use(morgan("dev"));
 
-// routes
+// Routes
+app.use("/v1/users", userRoute);
+
 app.get("/", (req, res)=>{
     res.send("hello world")
 })
 
 // error handler
+app.use(errorHandler);
 
 
 //mongoDB connect with server
